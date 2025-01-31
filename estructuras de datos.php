@@ -56,7 +56,7 @@ $texto = "hola mundo";
 $frecuencia = frecuenciaCaracteres($texto);
 print_r($frecuencia);
 
-//--------------------------------------------------------------
+//------------------------------------------------------------
 
 // #4. Problema de Bucle Anidado: Pirámide de Asteriscos
 function imprimirPiramide($altura)
