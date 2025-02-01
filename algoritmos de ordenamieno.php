@@ -26,31 +26,29 @@ echo "Números después de Bubble Sort: " . implode(", ", $numerosOrdenados) . "
 //-------------------------------------------------------------------------
 
 // 2. Merge Sort (Ordenamiento Alfabético de Palabras)
-function mergeSort($lista)
-{
+function mergeSort($lista) {
     $n = count($lista);
-
+    
     if ($n <= 1) {
         return $lista;
     }
-
+    
     $mitad = floor($n / 2);
     $izquierda = array_slice($lista, 0, $mitad);
     $derecha = array_slice($lista, $mitad);
-
+    
     $izquierda = mergeSort($izquierda);
     $derecha = mergeSort($derecha);
-
+    
     return merge($izquierda, $derecha);
 }
 
-function merge($izquierda, $derecha)
-{
+function merge($izquierda, $derecha) {
     $resultado = [];
     $i = $j = 0;
-
+    
     while ($i < count($izquierda) && $j < count($derecha)) {
-        if (strcmp($izquierda[$i], $derecha[$j]) <= 0) {
+        if (strtolower($izquierda[$i]) <= strtolower($derecha[$j])) {//strtolowe -> convertir a minusculas
             $resultado[] = $izquierda[$i];
             $i++;
         } else {
@@ -58,17 +56,17 @@ function merge($izquierda, $derecha)
             $j++;
         }
     }
-
+    
     while ($i < count($izquierda)) {
         $resultado[] = $izquierda[$i];
         $i++;
     }
-
+    
     while ($j < count($derecha)) {
         $resultado[] = $derecha[$j];
         $j++;
     }
-
+    
     return $resultado;
 }
 
@@ -81,22 +79,21 @@ echo "Palabras después de Merge Sort: " . implode(", ", $palabrasOrdenadas) . "
 //-------------------------------------------------------------------------
 
 // 3. Insertion Sort (Ordenamiento Alfabético de Nombres)
-function insertionSort($lista)
-{
+function insertionSort($lista) {
     $n = count($lista);
-
+    
     for ($i = 1; $i < $n; $i++) {
         $nombreActual = $lista[$i];
         $j = $i - 1;
-
-        while ($j >= 0 && strcmp($lista[$j], $nombreActual) > 0) {
+        //strtolowe -> convertir a minusculas
+        while ($j >= 0 && strtolower($lista[$j]) > strtolower($nombreActual)) {
             $lista[$j + 1] = $lista[$j];
             $j--;
         }
-
+        
         $lista[$j + 1] = $nombreActual;
     }
-
+    
     return $lista;
 }
 
